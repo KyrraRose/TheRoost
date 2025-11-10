@@ -1,8 +1,8 @@
-package model;
+package com.pluralsight.model.drinks;
 
 import java.util.ArrayList;
 
-public class SiphonCoffee extends Drink{
+public class SiphonCoffee extends Drink {
     private boolean roomForCream,addShot,addMilk,addSweetener;
     private ArrayList<String> syrup;
 
@@ -12,7 +12,7 @@ public class SiphonCoffee extends Drink{
         this.addShot = false;
         this.addMilk = false;
         this.addSweetener = false;
-        this.syrup=null;
+        this.syrup = null;
     }
 
     public boolean isAddShot() {
@@ -26,5 +26,19 @@ public class SiphonCoffee extends Drink{
 
     public void setRoomForCream(){
         this.roomForCream = true;
+        this.milk = "None";
     }
+
+    public boolean isRoomForCream() {
+        return roomForCream;
+    }
+
+    public boolean isAddMilk() {
+        return addMilk;
+    }
+
+    public boolean isAddSweetener() {
+        return addSweetener;
+    }
+
 }

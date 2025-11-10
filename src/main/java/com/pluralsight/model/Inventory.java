@@ -1,4 +1,4 @@
-package model;
+package com.pluralsight.model;
 
 
 import java.util.ArrayList;
@@ -8,24 +8,29 @@ import java.util.List;
 public class Inventory {
     private static Inventory instance; //We're making this singleton, we only want one inventory
     private HashMap<String,ArrayList<String>> inventory;
-    private ArrayList<String> base,milks,syrups,toppings,tempTypes,drinkTypes;
+    private ArrayList<String> base,milks,syrups,toppings,tempTypes,drinkTypes,bagels,cookies;
     private HashMap<String,String> drinkTypesDescription;
 
     private Inventory() {
-        inventory = new HashMap<>();
+
         base = new ArrayList<>(List.of("Espresso","Decaf","House Blend","Earl Grey","Matcha","Chai","None"));
         milks = new ArrayList<>(List.of("2% Milk","Whole Milk","Oat Milk","Pigeon Milk","None"));
         syrups = new ArrayList<>(List.of("Chocolate","Vanilla","Caramel","Toffeenut","Cherry","Hazelnut","Pumpkin Spice","Peppermint","Maple Pecan"));
         toppings = new ArrayList<>(List.of("Whipped Cream","Toffee Sprinkles","Chocolate Shavings","Cinnamon Streusel","Cookie Crumbles"));
         tempTypes = new ArrayList<>(List.of("Hot","Iced","Frozen"));
         drinkTypes = new ArrayList<>(List.of("Latte","Siphon Coffee","Tea","Steamer"));
+        bagels = new ArrayList<>(List.of("Plain","Honey Buttered","Sandwich"));
+        cookies = new ArrayList<>(List.of("Brewster's Sable Shortbread","Homemade Chocolate Chip","Double Chocolate Cookie","Oatmeal Raisin","Snickerdoodle"));
 
-        inventory.put("Caffeine Base",base);
-        inventory.put("Milks",milks);
-        inventory.put("Syrups",syrups);
-        inventory.put("Toppings",toppings);
-        inventory.put("Temperature",tempTypes);
-        inventory.put("Drinks",drinkTypes);
+        inventory = new HashMap<>(){{put("Caffeine Base",base);
+            put("Milks",milks);
+            put("Syrups",syrups);
+            put("Toppings",toppings);
+            put("Temperature",tempTypes);
+            put("Drinks",drinkTypes);
+            put("Bagels",bagels);
+            put("Cookies",cookies);
+        }};
 
         // drinks with descriptions, as a map
          drinkTypesDescription = new HashMap(){{

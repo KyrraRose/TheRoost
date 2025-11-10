@@ -1,11 +1,11 @@
 package com.pluralsight;
 
-import model.*;
+import com.pluralsight.model.*;
 
 public class Main {
     public static void main(String[] args) {
         Inventory inventory = Inventory.getInstance();
 
-        inventory.displayInventory("Drinks");
+        inventory.displayInventory("Cookies");
     }
 }

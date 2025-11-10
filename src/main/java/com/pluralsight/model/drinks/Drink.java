@@ -1,4 +1,6 @@
-package model;
+package com.pluralsight.model.drinks;
+
+import com.pluralsight.model.MenuItem;
 
 import java.util.List;
 

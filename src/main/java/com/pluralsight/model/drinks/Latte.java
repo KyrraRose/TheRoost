@@ -1,10 +1,10 @@
-package model;
+package com.pluralsight.model.drinks;
 
-public class Latte extends Drink{
+public class Latte extends Drink {
     private boolean dry,addShot,addMilk;
 
-    public Latte(double price, String item, String size, String base) {
-        super(price, item, size, base,milk);
+    public Latte(double price, String item, String size, String base, String milk) {
+        super(price,item,size,base,milk);
     }
 
     //dry means extra foam, like a cappuccino
