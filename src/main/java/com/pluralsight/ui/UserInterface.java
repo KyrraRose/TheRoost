@@ -2,19 +2,26 @@ package com.pluralsight.ui;
 
 import com.pluralsight.model.Inventory;
 
+import static com.pluralsight.ui.MenuOptions.*;
+import static com.pluralsight.ui.MenuUtility.*;
+
+
 public class UserInterface {
     private final Inventory inventory = Inventory.getInstance();
 
     public void displayWelcome(){
-        System.out.printf("%s%s%n%s%s%n%s%s%s%n",MenuUtility.TEAL,MenuUtility.BORDER_T,MenuUtility.MINT,MenuUtility.WELCOME_MESSAGE,MenuUtility.TEAL,MenuUtility.BORDER_B,MenuUtility.RESET);
+        System.out.printf("%s%s%n%s%s%n%s%s%s%n",TEAL,ALT_BORDER_T,MINT,WELCOME_MESSAGE,TEAL,ALT_BORDER_B,RESET);
     }
     public void displayMainMenu(){
-        System.out.printf("%s%s%s%n",MenuUtility.BROWN,MenuUtility.ALT_BORDER_T,MenuUtility.RESET);
-        System.out.printf("%s\t[1] I'd like a new order.%n\t[0] Nevermind. Goodbye!%s%n",MenuUtility.BEIGE,MenuUtility.RESET);
-        System.out.printf("%s%s%s%n",MenuUtility.BROWN,MenuUtility.ALT_BORDER_B,MenuUtility.RESET);
+        systemDialogue(BROWN,BEIGE,displayOptions(MAIN));
     }
     public void handleMainSelection(){
-
+        switch(MenuUtility.getUserInt(MenuUtility.BEIGE)){case 1 -> displayOrderMenu();case 0 -> exit() ;
+        }
+    }
+    public void displayOrderMenu(){
+        systemDialogue(TEAL,MINT,"You would like to place an order?...Coo.%n\t....What would you like?...");
+        systemDialogue(BROWN,BEIGE,displayOptions(ORDER));
     }
 
     public void displayAllChoices(){
@@ -24,7 +31,17 @@ public class UserInterface {
         }
     }
     public void handleMenuSelection(int choice){
-
+        switch(MenuUtility.getUserInt(MenuUtility.BEIGE)){
+            case 1 -> //drink
+             ;
+            case 2 -> //Breakfast Item
+            ;
+            case 3 -> //Cookie
+            ;
+            case 4 -> //Checkout
+            ;
+            case 0 -> exit() ;
+        }
     }
 
 }

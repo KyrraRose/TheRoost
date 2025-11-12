@@ -7,7 +7,7 @@ public class MenuUtility {
     private static final int INVALID_INPUT = -1;
     public static final String WELCOME_MESSAGE = "\tWelcome to The Roost!\n\tMy name is Brewster....\n\tWhat can I get started for you?...Coo.";
     private static final String RETURN_TO_MENU_MESSAGE = "Press [ENTER] to return to menu";
-    private static final String EXIT_MESSAGE = "Thank you for visiting The Roost!";
+    private static final String EXIT_MESSAGE = "Thank you...for visiting The Roost!\n\tCome back soon...Coo.";
     private static final Scanner scanner = new Scanner(System.in);
 
     //console colors! "\033[38;2;<R>;<G>;<B>m"
@@ -20,9 +20,18 @@ public class MenuUtility {
 
     //Borders
     public static final String BORDER_T = "╔══════ .✾. ════════════════════ THE ROOST ════════════════════╗";
-    public static final String BORDER_B = "╚═══════════════════════════════════════════════════ .✾. ══════╝";
+    public static final String BORDER_B = "╚═══════════════════════════════════════════════════ .✾. ══════╝\n";
     public static final String ALT_BORDER_T = "╔══════ .✾. ════════════════ THE ROOST ═════════════╗";
-    public static final String ALT_BORDER_B = "╚════════════════════════════════════════ .✾. ══════╝";
+    public static final String ALT_BORDER_B = "╚════════════════════════════════════════ .✾. ══════╝\n";
+    public static void border(String border,String color){
+        System.out.printf("%s%s%s%n",color,border,MenuUtility.RESET);
+    }
+
+    public static void systemDialogue(String borderColor,String textColor, String message){
+        border(ALT_BORDER_T,borderColor);
+        System.out.printf("%s\t"+message+"%n",textColor);
+        border(ALT_BORDER_B,borderColor);
+    }
 
 
     public static int getUserInt(String color){
@@ -53,10 +62,12 @@ public class MenuUtility {
     }
 
     public static void exit() {
-        System.out.println(EXIT_MESSAGE);
+        System.out.printf("%s%s%n\t%s%s%n%s%s%n",TEAL,ALT_BORDER_T,MINT,EXIT_MESSAGE,TEAL,ALT_BORDER_B);
+        System.out.flush();
         scanner.close();
         System.exit(0);
     }
+
     private MenuUtility() {
         throw new AssertionError("Cannot instantiate constants class");
     }

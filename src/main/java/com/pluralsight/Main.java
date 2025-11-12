@@ -15,6 +15,7 @@ public class Main {
         System.out.println();
         ui.displayWelcome();
         ui.displayMainMenu();
+        ui.handleMainSelection();
 
         //ui.displayAllChoices();
     }
