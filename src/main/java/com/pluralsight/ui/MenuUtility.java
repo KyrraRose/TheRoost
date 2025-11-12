@@ -5,8 +5,9 @@ import java.util.*;
 public class MenuUtility {
     //I looked up constants after borrowing some of these from the advanced VIS system
     private static final int INVALID_INPUT = -1;
+    public static final String WELCOME_MESSAGE = "\tWelcome to The Roost!\n\tMy name is Brewster....\n\tWhat can I get started for you?...Coo.";
     private static final String RETURN_TO_MENU_MESSAGE = "Press [ENTER] to return to menu";
-    private static final String EXIT_MESSAGE = "Thank you for visiting Brewster's Cafe!";
+    private static final String EXIT_MESSAGE = "Thank you for visiting The Roost!";
     private static final Scanner scanner = new Scanner(System.in);
 
     //console colors! "\033[38;2;<R>;<G>;<B>m"
@@ -17,9 +18,16 @@ public class MenuUtility {
     public static final String BEIGE = "\033[38;2;245;245;220m";
     public static final String MINT = "\033[38;2;152;255;152m";
 
-    public static int getUserInt(){
+    //Borders
+    public static final String BORDER_T = "╔══════ .✾. ════════════════════ THE ROOST ════════════════════╗";
+    public static final String BORDER_B = "╚═══════════════════════════════════════════════════ .✾. ══════╝";
+    public static final String ALT_BORDER_T = "╔══════ .✾. ════════════════ THE ROOST ═════════════╗";
+    public static final String ALT_BORDER_B = "╚════════════════════════════════════════ .✾. ══════╝";
 
-        System.out.print("Type Here: ");
+
+    public static int getUserInt(String color){
+
+        System.out.printf("%sType Here:%s ",color,MenuUtility.RESET);
         try {
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -43,10 +51,14 @@ public class MenuUtility {
         System.out.println("\n" + RETURN_TO_MENU_MESSAGE);
         scanner.nextLine();
     }
+
     public static void exit() {
         System.out.println(EXIT_MESSAGE);
         scanner.close();
         System.exit(0);
+    }
+    private MenuUtility() {
+        throw new AssertionError("Cannot instantiate constants class");
     }
 
 }

@@ -3,31 +3,32 @@ package com.pluralsight.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class Inventory {
     private static Inventory instance; //We're making this singleton, we only want one inventory
-    private HashMap<String,ArrayList<String>> inventory;
-    private ArrayList<String> base,milks,syrups,toppings,tempTypes,drinkTypes,bagels,cookies;
+    private final LinkedHashMap<String,ArrayList<String>> inventory;
+    private final ArrayList<String> base,milks,syrups,toppings,tempTypes,drinkTypes,bagels,cookies;
     private HashMap<String,String> drinkTypesDescription;
 
     private Inventory() {
-
+        drinkTypes = new ArrayList<>(List.of("Latte","Siphon Coffee","Tea","Steamer"));
         base = new ArrayList<>(List.of("Espresso","Decaf","House Blend","Earl Grey","Matcha","Chai","None"));
         milks = new ArrayList<>(List.of("2% Milk","Whole Milk","Oat Milk","Pigeon Milk","None"));
         syrups = new ArrayList<>(List.of("Chocolate","Vanilla","Caramel","Toffeenut","Cherry","Hazelnut","Pumpkin Spice","Peppermint","Maple Pecan"));
         toppings = new ArrayList<>(List.of("Whipped Cream","Toffee Sprinkles","Chocolate Shavings","Cinnamon Streusel","Cookie Crumbles"));
         tempTypes = new ArrayList<>(List.of("Hot","Iced","Frozen"));
-        drinkTypes = new ArrayList<>(List.of("Latte","Siphon Coffee","Tea","Steamer"));
         bagels = new ArrayList<>(List.of("Plain","Honey Buttered","Sandwich"));
         cookies = new ArrayList<>(List.of("Brewster's Sable Shortbread","Homemade Chocolate Chip","Double Chocolate Cookie","Oatmeal Raisin","Snickerdoodle"));
 
-        inventory = new HashMap<>(){{put("Caffeine Base",base);
+        inventory = new LinkedHashMap<>(){{
+            put("Drinks",drinkTypes);
+            put("Caffeine Base",base);
             put("Milks",milks);
             put("Syrups",syrups);
             put("Toppings",toppings);
             put("Temperature",tempTypes);
-            put("Drinks",drinkTypes);
             put("Bagels",bagels);
             put("Cookies",cookies);
         }};
@@ -45,10 +46,10 @@ public class Inventory {
         return inventory;
     }
 
-    public void displayInventory(String type){
-        System.out.println(type+":");
+    public void displayInventory(String type,String color,String reset){
+        final String itemFormat = "\t%s[%d] %s%s%n";
         for (int i=1;i<=inventory.get(type).size();i++){
-            System.out.printf("[%d] %s\n",i,inventory.get(type).get(i-1));
+            System.out.printf(itemFormat,color,i,inventory.get(type).get(i-1),reset);
         }
     }
 
