@@ -1,28 +1,52 @@
 package com.pluralsight.ui;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class MenuUtility {
+    //I looked up constants after borrowing some of these from the advanced VIS system
+    private static final int INVALID_INPUT = -1;
+    private static final String RETURN_TO_MENU_MESSAGE = "Press [ENTER] to return to menu";
+    private static final String EXIT_MESSAGE = "Thank you for visiting Brewster's Cafe!";
+    private static final Scanner scanner = new Scanner(System.in);
 
+    //console colors! "\033[38;2;<R>;<G>;<B>m"
+    public static final String RESET = "\033[0m";
+
+    public static final String TEAL = "\033[38;2;0;128;128m";
+    public static final String BROWN = "\033[38;2;111;78;55m";
+    public static final String BEIGE = "\033[38;2;245;245;220m";
+    public static final String MINT = "\033[38;2;152;255;152m";
 
     public static int getUserInt(){
-        Scanner scanner = new Scanner(System.in);
+
         System.out.print("Type Here: ");
-        int choice = scanner.nextInt();
-        scanner.nextLine();
-        return choice;
+        try {
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+            return choice;
+        } catch (InputMismatchException e) {
+            scanner.nextLine();
+            return INVALID_INPUT;
+        }
     }
     public static String getUserString(String prompt){
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
+        String input = scanner.nextLine().trim();
         return input;
     }
     public static boolean getYesNo(String prompt){
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine().trim();
+        String input = getUserString(prompt + " (yes/no): ");
         boolean yesNo = false;
         switch(input){case "Yes","Y","y","yes","yeah","yep","yea","ok","alright"->yesNo=true;}
         return yesNo;
+    }
+    public static void pressEnter() {
+        System.out.println("\n" + RETURN_TO_MENU_MESSAGE);
+        scanner.nextLine();
+    }
+    public static void exit() {
+        System.out.println(EXIT_MESSAGE);
+        scanner.close();
+        System.exit(0);
     }
 
 }
