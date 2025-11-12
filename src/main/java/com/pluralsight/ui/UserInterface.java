@@ -4,10 +4,11 @@ import com.pluralsight.model.Inventory;
 
 import static com.pluralsight.ui.MenuOptions.*;
 import static com.pluralsight.ui.MenuUtility.*;
+import static com.pluralsight.ui.OrderSystem.*;
 
 
 public class UserInterface {
-    private final Inventory inventory = Inventory.getInstance();
+
 
     public void displayWelcome(){
         System.out.printf("%s%s%n%s%s%n%s%s%s%n",TEAL,ALT_BORDER_T,MINT,WELCOME_MESSAGE,TEAL,ALT_BORDER_B,RESET);
@@ -24,23 +25,19 @@ public class UserInterface {
         systemDialogue(BROWN,BEIGE,displayOptions(ORDER));
     }
 
-    public void displayAllChoices(){
-        for (String type : inventory.getInventory().keySet()) {
-            System.out.printf("%s%s:%s%n",MenuUtility.MINT,type,MenuUtility.RESET);
-            inventory.displayInventory(type,MenuUtility.BEIGE,MenuUtility.RESET);
-        }
-    }
-    public void handleMenuSelection(int choice){
+
+    public void handleMenuSelection(){
         switch(MenuUtility.getUserInt(MenuUtility.BEIGE)){
-            case 1 -> //drink
-             ;
-            case 2 -> //Breakfast Item
-            ;
-            case 3 -> //Cookie
-            ;
-            case 4 -> //Checkout
-            ;
-            case 0 -> exit() ;
+            case 1 ->{ //drink
+                    systemDialogue(TEAL,MINT,"You would like to order a drink?...Coo.\n\tWhat... would you like? We have...");
+                    systemDialogueLarge(BROWN,BEIGE,displayOptions(DESCRIPTIONS));
+                    processOrderDrink();}
+            case 2 -> {systemDialogue(TEAL,MINT,"You are hungry?...We have bagels...Coo.");
+                    processOrderFood();}
+            case 3 ->{ systemDialogue(TEAL,MINT,"Coo..A cookie? Certainly...");
+                processAddCookie();}
+            case 4 ->{ checkout();}
+            case 0 ->{ exit() ;}
         }
     }
 

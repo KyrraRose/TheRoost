@@ -7,6 +7,13 @@ public class MenuOptions {
     public static final List<String> MAIN = new ArrayList<>(List.of("Main Menu","Order"));
     public static final List<String> ORDER = new ArrayList<>(List.of("Order Menu","Drink","Breakfast Item","Cookie","Checkout"));
 
+    public static final List<String> DESCRIPTIONS = new ArrayList<>(List.of(
+            "Our Available Drinks",
+            "Latte: Rich espresso balanced with steamed milk and a light layer of foam.",
+            "Siphon Coffee: Full-bodied coffee brewed with hot water through a siphon.",
+            "Tea: Smooth, earthy teas brewed gently with hot water. Milk optional.",
+            "Steamer: Comforting warm,steamed milk with optional flavors."));
+
     public static String displayOptions(List<String> menuType){
 
         StringBuilder message = new StringBuilder();

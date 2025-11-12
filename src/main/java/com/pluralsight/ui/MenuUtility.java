@@ -19,8 +19,8 @@ public class MenuUtility {
     public static final String MINT = "\033[38;2;152;255;152m";
 
     //Borders
-    public static final String BORDER_T = "╔══════ .✾. ════════════════════ THE ROOST ════════════════════╗";
-    public static final String BORDER_B = "╚═══════════════════════════════════════════════════ .✾. ══════╝\n";
+    public static final String BORDER_T = "╔═══════════ .✾. ════════════════════ THE ROOST ═════════════════════════════════════════╗";
+    public static final String BORDER_B = "╚════════════════════════════════════════════════════════════════════════ .✾. ═══════════╝\n";
     public static final String ALT_BORDER_T = "╔══════ .✾. ════════════════ THE ROOST ═════════════╗";
     public static final String ALT_BORDER_B = "╚════════════════════════════════════════ .✾. ══════╝\n";
     public static void border(String border,String color){
@@ -31,6 +31,11 @@ public class MenuUtility {
         border(ALT_BORDER_T,borderColor);
         System.out.printf("%s\t"+message+"%n",textColor);
         border(ALT_BORDER_B,borderColor);
+    }
+    public static void systemDialogueLarge(String borderColor,String textColor, String message){
+        border(BORDER_T,borderColor);
+        System.out.printf("%s\t"+message+"%n",textColor);
+        border(BORDER_B,borderColor);
     }
 
 
