@@ -14,6 +14,9 @@ public class MenuOptions {
             "Tea: Smooth, earthy teas brewed gently with hot water. Milk optional.",
             "Steamer: Comforting warm,steamed milk with optional flavors."));
 
+    public static final List<String> SIZE = new ArrayList<>(List.of("Sizes","Small","Medium","Large"));
+    public static final List<String> TEMP = new ArrayList<>(List.of("Styles","Hot","Iced","Frozen"));
+
     public static String displayOptions(List<String> menuType){
 
         StringBuilder message = new StringBuilder();
@@ -27,4 +30,21 @@ public class MenuOptions {
         message.append("\t\t[0] Nevermind. Goodbye!");
         return message.toString();
     }
+    public static String displaySizePrice(List<String> menuType){
+
+        StringBuilder message = new StringBuilder();
+        double price = 1;
+        for(int i=0; i<menuType.size();i++){
+
+            if (i == 0){
+                message.append(String.format("✾ %s:%n", menuType.get(i)));
+            }  else {
+                message.append(String.format("\t\t[%d] %s - $%.2f%n", i, menuType.get(i),price));
+                price +=.5;
+            }
+        }
+        message.append("\t\t[0] Nevermind. Goodbye!");
+        return message.toString();
+    }
+
 }

@@ -2,9 +2,12 @@ package com.pluralsight.model.drinks;
 
 public class Latte extends Drink {
     private boolean dry,addShot,addMilk;
+    private int numShots;
 
-    public Latte(double price, String item, String size, String base, String milk) {
-        super(price,item,size,base,milk);
+    public Latte(String item, String size, String base, String milk) {
+        super(item,size,base,milk);
+        this.numShots = 2;
+        this.addShot = false;
     }
 
     //dry means extra foam, like a cappuccino
@@ -20,8 +23,9 @@ public class Latte extends Drink {
         return addShot;
     }
 
-    public void setAddShot(boolean addShot,int numShots) {
-        this.addShot = addShot;
+    public void setAddShot(int numShots) {
+        this.addShot = true;
+        this.numShots += numShots;
         this.price += .5*numShots;
     }
 
@@ -40,5 +44,29 @@ public class Latte extends Drink {
 
     public void setMilk(String milk) {
         this.milk = milk;
+    }
+
+    @Override
+    public String displayDrink() {
+        StringBuilder drink = new StringBuilder(String.format("Drink: %s %s%n\t- %s%n\t- %s%n\t- %s",this.temp,this.item,this.size,this.base,this.milk));
+        if (isDry()){
+            drink.append(String.format("%n\t- Dry"));
+        }
+        if (isAddShot()){
+            drink.append(String.format("%n\t- %d Extra Shots +$%.2f",this.numShots-2,(.5*(numShots-2))));
+        }
+        if (!this.syrup.isEmpty()){
+            for(String s :this.syrup){
+                drink.append(String.format("%n\t- %s",s));
+            }
+        }
+        if (!this.toppings.isEmpty()){
+            for(String t :this.toppings){
+                drink.append(String.format("%n\t- %s",t));
+            }
+        }
+
+        drink.append(String.format("%nDrink Total: $%.2f",this.price));
+        return drink.toString();
     }
 }

@@ -10,8 +10,8 @@ public abstract class Drink extends MenuItem {
     //some of these will have an assumed default, and we want the option for multiple syrups
 
 
-    public Drink(double price, String item, String size, String base, String milk) {
-        super(price, item);
+    public Drink(String item, String size, String base, String milk) {
+        super(item);
         this.size = size;
         this.base = base;
         this.syrup = null;
@@ -50,5 +50,21 @@ public abstract class Drink extends MenuItem {
 
     public void setToppings(String toppings) {
         this.toppings.add(toppings);
+    }
+
+    public String displayDrink(){
+        StringBuilder drink = new StringBuilder(String.format("Drink: %s %s%n\t- %s%n\t- %s%n\t- %s",this.temp,this.item,this.size,this.base,this.milk));
+        if (!this.syrup.isEmpty()){
+            for(String s :this.syrup){
+                drink.append(String.format("%n\t- %s",s));
+            }
+        }
+        if (!this.toppings.isEmpty()){
+            for(String t :this.toppings){
+                drink.append(String.format("%n\t- %s",t));
+            }
+        }
+        drink.append(String.format("%nDrink Total: $%.2f",this.price));
+        return drink.toString();
     }
 }

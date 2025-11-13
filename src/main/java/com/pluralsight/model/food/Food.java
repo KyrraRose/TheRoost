@@ -4,7 +4,7 @@ public class Food extends MenuItem{
     protected boolean isHeated,toGo;
 
     public Food(double price, String item, boolean isHeated, boolean toGo) {
-        super(price, item);
+        super(item);
         this.isHeated = isHeated;
         this.toGo = toGo;
     }

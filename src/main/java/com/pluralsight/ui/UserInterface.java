@@ -21,7 +21,7 @@ public class UserInterface {
         }
     }
     public void displayOrderMenu(){
-        systemDialogue(TEAL,MINT,"You would like to place an order?...Coo.%n\t....What would you like?...");
+        systemDialogue(TEAL,MINT,"You're placing an order?...Coo.%n\t....What would you like?...");
         systemDialogue(BROWN,BEIGE,displayOptions(ORDER));
     }
 
@@ -29,12 +29,12 @@ public class UserInterface {
     public void handleMenuSelection(){
         switch(MenuUtility.getUserInt(MenuUtility.BEIGE)){
             case 1 ->{ //drink
-                    systemDialogue(TEAL,MINT,"You would like to order a drink?...Coo.\n\tWhat... would you like? We have...");
+                    systemDialogue(TEAL,MINT,"You want to order a drink?...Coo.\n\tWhat would you like? We have...");
                     systemDialogueLarge(BROWN,BEIGE,displayOptions(DESCRIPTIONS));
                     processOrderDrink();}
             case 2 -> {systemDialogue(TEAL,MINT,"You are hungry?...We have bagels...Coo.");
                     processOrderFood();}
-            case 3 ->{ systemDialogue(TEAL,MINT,"Coo..A cookie? Certainly...");
+            case 3 ->{ systemDialogue(TEAL,MINT,"Coo..Add a cookie? Certainly.");
                 processAddCookie();}
             case 4 ->{ checkout();}
             case 0 ->{ exit() ;}

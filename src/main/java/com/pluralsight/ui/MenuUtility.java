@@ -29,7 +29,7 @@ public class MenuUtility {
 
     public static void systemDialogue(String borderColor,String textColor, String message){
         border(ALT_BORDER_T,borderColor);
-        System.out.printf("%s\t"+message+"%n",textColor);
+        System.out.printf("%s\t%s %n",textColor,message);
         border(ALT_BORDER_B,borderColor);
     }
     public static void systemDialogueLarge(String borderColor,String textColor, String message){
