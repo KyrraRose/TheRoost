@@ -1,6 +1,5 @@
 package com.pluralsight.model.food;
 
-import com.pluralsight.model.Food;
 
 public class Bagel extends Food {
     private String portionType;
@@ -36,7 +35,7 @@ public class Bagel extends Food {
     }
 
     public String displayItem() {
-        StringBuilder bagel = new StringBuilder(String.format("Food: %s %s%n\t\t",this.portionType,this.item));
+        StringBuilder bagel = new StringBuilder(String.format("Food: %s %s",this.portionType,this.item));
         if (isToGo()){
             bagel.append(String.format("%n\t\t- To Go"));
         }else{
@@ -45,17 +44,17 @@ public class Bagel extends Food {
             bagel.append(String.format("%n\t\t- Toasted"));
         }
 
-        bagel.append(String.format("\t%nItem Total: $%.2f",calculateTotal()));
+        bagel.append(String.format("%n\tItem Total: $%.2f",calculateTotal()));
         return bagel.toString();
     }
     public String formatForReceipt() {
-        StringBuilder bagel = new StringBuilder(String.format("Food: %s %s - $%.2f%n\t\t",this.portionType,this.item,calculateTotal()));
+        StringBuilder bagel = new StringBuilder(String.format("\t\t\t%s %s - $%.2f",this.portionType,this.item,calculateTotal()));
         if (isToGo()){
-            bagel.append(String.format("%n\t\t- To Go"));
+            bagel.append(String.format("%n\t\t\t\t- To Go"));
         }else{
-            bagel.append(String.format("%n\t\t- For Here"));}
+            bagel.append(String.format("%n\t\t\t\t- For Here"));}
         if (isToasted()){
-            bagel.append(String.format("%n\t\t- Toasted"));
+            bagel.append(String.format("%n\t\t\t\t- Toasted"));
         }
         return bagel.toString();
     }

@@ -1,6 +1,8 @@
-package com.pluralsight.model;
+package com.pluralsight.model.food;
 
-public class Food extends MenuItem{
+import com.pluralsight.model.MenuItem;
+
+public abstract class Food extends MenuItem {
     protected boolean toGo;
 
     public Food(String item, boolean toGo) {
@@ -15,8 +17,6 @@ public class Food extends MenuItem{
     public void setToGo(boolean toGo) {
         this.toGo = toGo;
     }
-    public String displayFood(){
-        return this.item;
-    }
+
 
 }

@@ -51,7 +51,7 @@ public class OrderSystem {
     public static void processOrderDrink(){
         systemDialogue(TEAL,MINT,"You want to order a drink?...Coo.\n\tWhat would you like? We have...");
         do {
-            systemDialogueLarge(BROWN, BEIGE, displayOptions(DESCRIPTIONS));
+            systemDialogueLarge(BROWN, BEIGE, displayMenuWithBack(DESCRIPTIONS));
             switch (getUserInt()) {
                 case 1 -> receipt.addToReceipt(buildLatte());
                 case 2 -> receipt.addToReceipt(buildCoffee());
@@ -175,7 +175,7 @@ public class OrderSystem {
 
             //set extras
             drink.setTemp(askKind(TEMP,"Would you like your tea iced or frozen?..."));
-            if(!drink.getMilk().equals("None")){
+            if(!drink.getMilk().equals("None") && drink.getTemp().equals("Hot")){
                 if(askExtras("Coo..do you want the milk steamed?")){drink.setSteamMilk();}
             }
             if(askExtras("Any extra tea bags?...Coo..\n\tYou already get one..")){
@@ -269,20 +269,20 @@ public class OrderSystem {
     }
     public static Bagel buildBagel(){
         while(true) {
-            systemDialogueLarge(BROWN, BEIGE, displayOptions(BAGELS));
+            systemDialogue(BROWN, BEIGE, displayFoodPrice(BAGELS));
             String portionType = BAGELS.get(getUserInt());
             boolean toGo = askExtras("Coo..Do you want that to go?...\n\t......Coo.");
             Bagel bagel = new Bagel("Bagel", toGo, portionType);
             bagel.setToasted(askExtras("Would you like that...toasted?..Coo."));
 
-            if (askConfirm(bagel.displayFood(), "Here is the bagel you ordered...\n\tCoo..Does it look right?..")) {
+            if (askConfirm(bagel.displayItem(), "Here is the bagel you ordered...\n\tCoo..Does it look right?..")) {
                 return bagel;
             }
         }
     }
 
     public static void processAddCookie(){
-        if(askConfirm("\tBrewster's Roost Sablé Shortbread Cookie - $.75","Coo...You would like one of my home-made cookies?")){
+        if(askConfirm("Roost Sablé Shortbread Cookie - $.75","Coo...You would like a cookie?...\n\tI make them myself..")){
             boolean toGo = askExtras("Do you want it to go?...");
             receipt.addToReceipt(new Cookie("Roost Sablé Shortbread Cookie",toGo));
         }
@@ -290,7 +290,14 @@ public class OrderSystem {
 
     //Checkout
     public static void checkout(){
-        System.out.println("Processing!");
+        systemDialogue(MINT,BEIGE,receipt.displayReceipt());
+        if(askExtras("Does this look correct?...")){
+            receipt.saveReceipt();
+            exit();
+        }else{
+            systemDialogue(TEAL,MINT,"Okay...We can start over..Coo.");
+            receipt.clearItems();
+        }
     }
 
 

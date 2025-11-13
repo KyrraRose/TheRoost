@@ -15,14 +15,14 @@ public class MenuUtility {
 
     public static final String TEAL = "\033[38;2;0;128;128m";
     public static final String BROWN = "\033[38;2;111;78;55m";
-    public static final String BEIGE = "\033[38;2;245;245;220m";
+    public static final String BEIGE = "\033[38;2;211;141;80m";
     public static final String MINT = "\033[38;2;152;255;152m";
 
     //Borders
-    public static final String BORDER_T = "╔═══════════ .✾. ════════════════════ THE ROOST ═════════════════════════════════════════╗";
-    public static final String BORDER_B = "╚════════════════════════════════════════════════════════════════════════ .✾. ═══════════╝\n";
-    public static final String ALT_BORDER_T = "╔══════ .✾. ════════════════ THE ROOST ═════════════╗";
-    public static final String ALT_BORDER_B = "╚════════════════════════════════════════ .✾. ══════╝\n";
+    public static final String BORDER_T = "╔═══════════ .✾. ════════════════════ THE ROOST ═════════════════════════════════════════╗\n";
+    public static final String BORDER_B = "\n╚════════════════════════════════════════════════════════════════════════ .✾. ═══════════╝\n";
+    public static final String ALT_BORDER_T = "╔══════ .✾. ════════════════ THE ROOST ═════════════╗\n";
+    public static final String ALT_BORDER_B = "\n╚════════════════════════════════════════ .✾. ══════╝\n";
     public static void border(String border,String color){
         System.out.printf("%s%s%s%n",color,border,MenuUtility.RESET);
     }

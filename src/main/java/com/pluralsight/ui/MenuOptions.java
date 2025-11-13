@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MenuOptions {
-    public static final List<String> MAIN = new ArrayList<>(List.of("Main Menu","Order"));
-    public static final List<String> ORDER = new ArrayList<>(List.of("Order Menu","Drink","Breakfast Item","Cookie","Checkout"));
+    public static final List<String> MAIN = new ArrayList<>(List.of("Main Menu","Order","Nevermind - Goodbye!"));
+    public static final List<String> ORDER = new ArrayList<>(List.of("Order Menu","Drink","Breakfast Item","Cookie","Checkout","I'm finished, goodbye!"));
 
     public static final List<String> DESCRIPTIONS = new ArrayList<>(List.of(
             "Our Available Drinks",
@@ -56,10 +56,25 @@ public class MenuOptions {
                 message.append(String.format("✾ %s:", menuType.get(i)));
             } else if (i==3) {
                 price = 4;
+                message.append(String.format("%n\t\t[%d] %s - $%.2f", i, menuType.get(i),price));
             } else {
+                message.append(String.format("%n\t\t[%d] %s - $%.2f", i, menuType.get(i),price));
                 price +=.5;
             }
-            message.append(String.format("%n\t\t[%d] %s - $%.2f", i, menuType.get(i),price));
+        }
+        return message.toString();
+    }
+    public static String displayMenuWithBack(List<String> menuType){
+
+        StringBuilder message = new StringBuilder();
+        for(int i=0; i<menuType.size();i++){
+            if (i == 0){
+                message.append(String.format("✾ %s:", menuType.get(i)));
+            } else if(i== menuType.size()-1){
+                message.append(String.format("%n\t\t[0] %s", menuType.get(i)));
+            } else {
+                message.append(String.format("%n\t\t[%d] %s", i, menuType.get(i)));
+            }
         }
         return message.toString();
     }

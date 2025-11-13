@@ -69,21 +69,21 @@ public class SiphonCoffee extends Drink {
         return drink.toString();
     }
     public String formatForReceipt() {
-        StringBuilder drink = new StringBuilder(String.format("Drink: %s %s Coffee - $%.2f%n\t\t- %s%n\t\t- %s",this.size,this.temp,calculateTotal(),this.base,this.milk));
+        StringBuilder drink = new StringBuilder(String.format("\t\t\t%s %s Coffee - $%.2f%n\t\t\t\t- %s%n\t\t\t\t- %s",this.size,this.temp,calculateTotal(),this.base,this.milk));
         if (isRoomForCream()){
-            drink.append(String.format("%n\t\t- Room for Cream"));
+            drink.append(String.format("%n\t\t\t\t- Room for Cream"));
         }
         if (isAddShot()){
-            drink.append(String.format("%n\t\t- %d Extra Shots +$%.2f",this.numShots,(.5*numShots)));
+            drink.append(String.format("%n\t\t\t\t- %d Extra Shots +$%.2f",this.numShots,(.5*numShots)));
         }
         if (!this.syrup.isEmpty()){
             for(String s :this.syrup){
-                drink.append(String.format("%n\t\t- %s",s));
+                drink.append(String.format("%n\t\t\t\t- %s",s));
             }
         }
         if (!this.toppings.isEmpty()){
             for(String t :this.toppings){
-                drink.append(String.format("%n\t\t- %s",t));
+                drink.append(String.format("%n\t\t\t\t- %s",t));
             }
         }
         return drink.toString();

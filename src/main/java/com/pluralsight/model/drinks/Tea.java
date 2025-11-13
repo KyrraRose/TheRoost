@@ -73,30 +73,28 @@ public class Tea extends Drink {
             }
         }
 
-        drink.append(String.format("%nDrink Total: $%.2f",calculateTotal()));
+        drink.append(String.format("%n\tDrink Total: $%.2f",calculateTotal()));
         return drink.toString();
     }
     public String formatForReceipt() {
-        StringBuilder drink = new StringBuilder(String.format("Drink: %s %s Tea - $%.2f%n\t\t- %s",this.size,this.temp,calculateTotal(),this.base));
+        StringBuilder drink = new StringBuilder(String.format("\t\t\t%s %s Tea - $%.2f%n\t\t\t\t- %s",this.size,this.temp,calculateTotal(),this.base));
         if (isSteamMilk()){
-            drink.append(String.format("%n\t\t- Steamed %s",this.milk));
+            drink.append(String.format("%n\t\t\t\t- Steamed %s",this.milk));
         }
         if (this.addTeaBag){
-            drink.append(String.format("%n\t\t- %d Tea Bags",this.teaBags));
+            drink.append(String.format("%n\t\t\t\t- %d Tea Bags",this.teaBags));
         }
 
         if (!this.syrup.isEmpty()){
             for(String s :this.syrup){
-                drink.append(String.format("%n\t\t- %s",s));
+                drink.append(String.format("%n\t\t\t\t- %s",s));
             }
         }
         if (!this.toppings.isEmpty()){
             for(String t :this.toppings){
-                drink.append(String.format("%n\t\t- %s",t));
+                drink.append(String.format("%n\t\t\t\t- %s",t));
             }
         }
-
-        drink.append(String.format("%nDrink Total: $%.2f",calculateTotal()));
         return drink.toString();
     }
 }
