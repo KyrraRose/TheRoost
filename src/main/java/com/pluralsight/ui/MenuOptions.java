@@ -16,6 +16,7 @@ public class MenuOptions {
 
     public static final List<String> SIZE = new ArrayList<>(List.of("Sizes","Small","Medium","Large"));
     public static final List<String> TEMP = new ArrayList<>(List.of("Styles","Hot","Iced","Frozen"));
+    public static final List<String> BAGELS = new ArrayList<>(List.of("Bagel Options","Plain","Honey Buttered","Sandwich"));
 
 
     public static String displayOptions(List<String> menuType){
@@ -23,12 +24,11 @@ public class MenuOptions {
         StringBuilder message = new StringBuilder();
         for(int i=0; i<menuType.size();i++){
             if (i == 0){
-                message.append(String.format("✾ %s:%n", menuType.get(i)));
+                message.append(String.format("✾ %s:", menuType.get(i)));
             }  else {
-                message.append(String.format("\t\t[%d] %s%n", i, menuType.get(i)));
+                message.append(String.format("%n\t\t[%d] %s", i, menuType.get(i)));
             }
         }
-        message.append("\t\t[0] Nevermind. Goodbye!");
         return message.toString();
     }
     public static String displaySizePrice(List<String> menuType){
@@ -38,13 +38,31 @@ public class MenuOptions {
         for(int i=0; i<menuType.size();i++){
 
             if (i == 0){
-                message.append(String.format("✾ %s:%n", menuType.get(i)));
+                message.append(String.format("✾ %s:", menuType.get(i)));
             }  else {
-                message.append(String.format("\t\t[%d] %s - $%.2f%n", i, menuType.get(i),price));
+                message.append(String.format("%n\t\t[%d] %s - $%.2f", i, menuType.get(i),price));
                 price +=.5;
             }
         }
         return message.toString();
     }
+    public static String displayFoodPrice(List<String> menuType){
+
+        StringBuilder message = new StringBuilder();
+        double price = 1;
+        for(int i=0; i<menuType.size();i++){
+
+            if (i == 0){
+                message.append(String.format("✾ %s:", menuType.get(i)));
+            } else if (i==3) {
+                price = 4;
+            } else {
+                price +=.5;
+            }
+            message.append(String.format("%n\t\t[%d] %s - $%.2f", i, menuType.get(i),price));
+        }
+        return message.toString();
+    }
+
 
 }

@@ -17,7 +17,14 @@ public class UserInterface {
         systemDialogue(BROWN,BEIGE,displayOptions(MAIN));
     }
     public void handleMainSelection(){
-        switch(getUserInt()){case 1 -> displayOrderMenu();case 0 -> exit() ;
+        switch(getUserInt()){
+            case 1 -> {
+                while(true) {
+                    displayOrderMenu();
+                    handleMenuSelection();
+                }
+            }
+            case 0 -> exit() ;
         }
     }
     public void displayOrderMenu(){
@@ -28,16 +35,20 @@ public class UserInterface {
 
     public void handleMenuSelection(){
         switch(getUserInt()){
-            case 1 ->{ //drink
-
-                    processOrderDrink();}
+            case 1 ->processOrderDrink();
             case 2 -> {systemDialogue(TEAL,MINT,"You are hungry?...We have bagels...Coo.");
                     processOrderFood();}
             case 3 ->{ systemDialogue(TEAL,MINT,"Coo..Add a cookie? Certainly.");
-                processAddCookie();}
+                        processAddCookie();}
             case 4 ->{ checkout();}
-            case 0 ->{ exit() ;}
+            case 0 ->{ exit();}
         }
+    }
+    public void run(){
+       displayWelcome();
+       displayMainMenu();
+       handleMainSelection();
+
     }
 
 }

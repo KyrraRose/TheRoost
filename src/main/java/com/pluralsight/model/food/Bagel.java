@@ -4,11 +4,49 @@ import com.pluralsight.model.Food;
 
 public class Bagel extends Food {
     private String portionType;
+    private boolean toasted;
 
-    public Bagel(double price, String item, boolean isHeated, boolean toGo, String portionType) {
-        super(price, item, isHeated, toGo);
+    public Bagel( String item, boolean toGo, String portionType) {
+        super(item, toGo);
         this.portionType = portionType;
-        switch(this.portionType){case "Plain"->this.price=1;case "Honey Buttered"->this.price=1.5;case "Sandwich"->this.price=4;}
+        this.toasted = false;
+
     }
 
+    public boolean isToasted() {
+        return toasted;
+    }
+
+    public void setToasted(boolean toasted) {
+        this.toasted = toasted;
+    }
+
+    public String getPortionType() {
+        return portionType;
+    }
+
+    public void setPortionType(String portionType) {
+        this.portionType = portionType;
+    }
+
+    @Override
+    public double calculateTotal() {
+        switch(this.portionType){case "Plain"->this.price=1;case "Honey Buttered"->this.price=1.5;case "Sandwich"->this.price=4;}
+        return this.price;
+    }
+
+    @Override
+    public String displayFood() {
+        StringBuilder bagel = new StringBuilder(String.format("Food: %s %s%n\t\t",this.portionType,this.item));
+        if (isToGo()){
+            bagel.append(String.format("%n\t\t- To Go"));
+        }else{
+            bagel.append(String.format("%n\t\t- For Here"));}
+        if (isToasted()){
+            bagel.append(String.format("%n\t\t- Toasted"));
+        }
+
+        bagel.append(String.format("\t%nItem Total: $%.2f",calculateTotal()));
+        return bagel.toString();
+    }
 }

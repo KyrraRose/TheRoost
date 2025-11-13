@@ -14,11 +14,11 @@ public class Steamer extends Drink {
 
     public void setKidsTemp() {
         this.kidsTemp = true;
-        this.temp="Hot";
     }
     //I wanted the steamer to be special somehow, so temperature gets to transform it
     @Override
     public void setTemp(String temp) {
+        this.temp = temp;
         switch(temp){case"Iced"->this.item="Flavored Milk";case"Frozen"->this.item="Milkshake";}
     }
     public double calculateTotal() {
@@ -52,7 +52,7 @@ public class Steamer extends Drink {
             }
         }
 
-        drink.append(String.format("%nDrink Total: $%.2f",calculateTotal()));
+        drink.append(String.format("\t%nDrink Total: $%.2f",calculateTotal()));
         return drink.toString();
     }
 }
