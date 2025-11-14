@@ -53,23 +53,23 @@ public class Steamer extends Drink {
             }
         }
 
-        drink.append(String.format("\t%nDrink Total: $%.2f",calculateTotal()));
+        drink.append(String.format("\t\t%nDrink Total: $%.2f",calculateTotal()));
         return drink.toString();
     }
     public String formatForReceipt() {
-        StringBuilder drink = new StringBuilder(String.format("\t\t\t%s %s %s - $%.2f%n\t\t\t\t- %s%n\t\t\t\t- %s",this.size,this.temp,this.item,calculateTotal(),this.base,this.milk));
+        StringBuilder drink = new StringBuilder(String.format("\t%s %s %s - $%.2f%n\t\t- %s%n\t\t- %s",this.size,this.temp,this.item,calculateTotal(),this.base,this.milk));
         if (isKidsTemp()){
-            drink.append(String.format("%n\t\t\t\t- Kid's Temperature (180 Degrees)"));
+            drink.append(String.format("%n\t\t- Kid's Temperature (180 Degrees)"));
         }
 
         if (!this.syrup.isEmpty()){
             for(String s :this.syrup){
-                drink.append(String.format("%n\t\t\t\t- %s",s));
+                drink.append(String.format("%n\t\t- %s",s));
             }
         }
         if (!this.toppings.isEmpty()){
             for(String t :this.toppings){
-                drink.append(String.format("%n\t\t\t\t- %s",t));
+                drink.append(String.format("%n\t\t- %s",t));
             }
         }
 

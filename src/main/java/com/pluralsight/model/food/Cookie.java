@@ -12,6 +12,6 @@ public class Cookie extends Food {
         this.price = .75;
     }
     public String formatForReceipt() {
-        return String.format("\t\t\t%s - $.75", this.item);
+        return String.format("\t%s - $.75", this.item);
     }
 }

@@ -23,6 +23,8 @@ public class MenuUtility {
     public static final String BORDER_B = "\n╚════════════════════════════════════════════════════════════════════════ .✾. ═══════════╝";
     public static final String ALT_BORDER_T = "\n╔══════ .✾. ════════════════ THE ROOST ═════════════╗\n";
     public static final String ALT_BORDER_B = "\n╚════════════════════════════════════════ .✾. ══════╝";
+    public static final String R_BORDER_T = "\n╔═════ .✾. ════════════ THE ROOST ══════════╗\n";
+    public static final String R_BORDER_B = "\n╚═════════════════════════════════ .✾. ═════╝";
     public static void border(String border,String color){
         System.out.printf("%s%s%s%n",color,border,MenuUtility.RESET);
     }

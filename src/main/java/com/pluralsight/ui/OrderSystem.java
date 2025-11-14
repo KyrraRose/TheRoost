@@ -51,7 +51,7 @@ public class OrderSystem {
     public static void processOrderDrink(){
         systemDialogue(TEAL,MINT,"You want to order a drink?...Coo.\n\tWhat would you like? We have...");
         do {
-            systemDialogueLarge(BROWN, BEIGE, displayMenuWithBack(DESCRIPTIONS));
+            systemDialogueLarge(BROWN, BEIGE, displayOptions(DESCRIPTIONS));
             switch (getUserInt()) {
                 case 1 -> receipt.addToReceipt(buildLatte());
                 case 2 -> receipt.addToReceipt(buildCoffee());

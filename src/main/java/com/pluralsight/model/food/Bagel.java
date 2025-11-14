@@ -48,13 +48,13 @@ public class Bagel extends Food {
         return bagel.toString();
     }
     public String formatForReceipt() {
-        StringBuilder bagel = new StringBuilder(String.format("\t\t\t%s %s - $%.2f",this.portionType,this.item,calculateTotal()));
+        StringBuilder bagel = new StringBuilder(String.format("\t%s %s - $%.2f",this.portionType,this.item,calculateTotal()));
         if (isToGo()){
-            bagel.append(String.format("%n\t\t\t\t- To Go"));
+            bagel.append(String.format("%n\t\t- To Go"));
         }else{
-            bagel.append(String.format("%n\t\t\t\t- For Here"));}
+            bagel.append(String.format("%n\t\t- For Here"));}
         if (isToasted()){
-            bagel.append(String.format("%n\t\t\t\t- Toasted"));
+            bagel.append(String.format("%n\t\t- Toasted"));
         }
         return bagel.toString();
     }
