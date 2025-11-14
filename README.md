@@ -2,6 +2,7 @@
 ###The Project
 This is the README for my (Kyrra Bosland) second capstone project. This project is the point-of-sale application for my own custom shop. 
 I decided to make a cafe inspired by one of my favorite games- Animal Crossing: New Horizons! In the game, a pigeon character named Brewster runs a cafe called the Roost.
+Originally in the game, Brewster uses a coffee siphon to brew you a cup.. just for 200 bells! 
 ![animal-crossing-the-roost](https://github.com/user-attachments/assets/b4d6ec40-03c6-43e1-a84b-025aea37ee04)
 
 ###Running the Application
