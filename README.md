@@ -22,7 +22,10 @@ This application has a few capabilities as dictated by our capstone requirements
 
 ## Structure
 For this project, I used a diagram to determine my class relationships:
+
 ![theRoost](https://github.com/user-attachments/assets/e0b1c686-da25-4b86-b0bf-8f038874daf8)
+
+The methods shown are not updated to reflect the actual classes, but the structure is there.
 
 Not diagrammed are:
 - **OrderSystem:** Handles gathering drink information and updating the Receipt
